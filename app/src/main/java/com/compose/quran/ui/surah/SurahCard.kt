@@ -22,7 +22,11 @@ import com.compose.quran.ui.widget.TextWidget
 
 @Composable
 fun SurahCard(
-    surahName : String
+    surahName : String,
+    arab: String,
+    number: Int,
+    totalAyah: Int,
+    revelationPlace: String
 ) {
     ConstraintLayout(
         modifier = Modifier
@@ -39,7 +43,7 @@ fun SurahCard(
                     centerVerticallyTo(parent)
                     top.linkTo(parent.top)
                 },
-            "12"
+            "$number"
         )
         Text(
             text = surahName,
@@ -57,7 +61,7 @@ fun SurahCard(
         )
 
         TextWidget(
-            text = "MEKAH - 7 AYAT",
+            text = "$revelationPlace - $totalAyah Ayat",
             fontWeight = FontWeight.Medium,
             fontSize = 14.sp,
             modifier = Modifier
@@ -69,7 +73,7 @@ fun SurahCard(
                 }
         )
         Text(
-            text = "الفاتحة",
+            text = arab,
             fontWeight = FontWeight.Bold,
             color = GreenPrimary,
             fontSize = 16.sp,
@@ -95,6 +99,12 @@ fun SurahCard(
 @Composable
 fun SurahCardPreview() {
     MobileQuranTheme(darkTheme = false) {
-        SurahCard("Alfatihah")
+        SurahCard(
+            surahName = "Al Fatihah",
+            arab = "الفاتحة",
+            number = 1,
+            totalAyah = 7,
+            revelationPlace = "Makkah"
+        )
     }
 }
