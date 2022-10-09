@@ -12,17 +12,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.compose.quran.ui.surah.Header
 import com.compose.quran.ui.surah.SurahList
-import com.compose.quran.ui.theme.GreenPrimary
-import com.compose.quran.ui.theme.GreenSolid
-import com.compose.quran.ui.theme.PoppinsFontFamily
-import com.compose.quran.ui.theme.UnselectedGrey
+import com.compose.quran.ui.theme.*
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 
 @ExperimentalPagerApi
 @Composable
 fun Main() {
-    Scaffold() {
+    Scaffold(
+        backgroundColor = BackGround
+    ) {
         Column {
             Header()
             TabLayout()
