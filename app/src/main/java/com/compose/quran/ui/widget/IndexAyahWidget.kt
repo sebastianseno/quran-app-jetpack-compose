@@ -9,12 +9,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.compose.quran.R
 
 @Composable
 fun IndexAyah(
-    @DrawableRes backgroundDrawableResId: Int,
     modifier: Modifier = Modifier,
+    fontSize: TextUnit = 13.sp,
+    @DrawableRes backgroundDrawableResId: Int = R.drawable.ic_ayah_frame,
     textNumber: String = ""
 ) {
     Box(
@@ -29,9 +33,9 @@ fun IndexAyah(
         )
         TextWidget(
             text = textNumber,
+            fontSize = fontSize,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.padding(top = 3.dp)
         )
-
     }
 }

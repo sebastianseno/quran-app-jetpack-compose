@@ -35,15 +35,15 @@ fun SurahCard(
     ) {
         val (image, title, description, ayah, divider) = createRefs()
         IndexAyah(
-            R.drawable.ic_ayah_frame,
-            Modifier
+           modifier = Modifier
                 .width(40.dp)
                 .height(40.dp)
                 .constrainAs(image) {
                     centerVerticallyTo(parent)
                     top.linkTo(parent.top)
                 },
-            "$number"
+            backgroundDrawableResId = R.drawable.ic_ayah_frame,
+            textNumber = "$number"
         )
         Text(
             text = surahName,

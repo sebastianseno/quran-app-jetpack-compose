@@ -12,10 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.compose.quran.R
 import com.compose.quran.ui.theme.BackGround
 import com.compose.quran.ui.theme.GreenSolid2
 import com.compose.quran.ui.theme.SoftGrey
+import com.compose.quran.ui.widget.IndexAyah
 import com.compose.quran.ui.widget.TextWidget
 
 @Preview
@@ -37,7 +39,14 @@ fun SurahDetailCard() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(horizontal = 13.dp)
             ) {
-                TextWidget(text = "1")
+                IndexAyah(
+                    modifier = Modifier
+                        .width(30.dp)
+                        .height(30.dp),
+                    fontSize = 10.sp,
+                    backgroundDrawableResId = R.drawable.ic_ayah_frame,
+                    textNumber = "1"
+                )
                 Spacer(modifier = Modifier.weight(1f))
                 Image(
                     painter = painterResource(
