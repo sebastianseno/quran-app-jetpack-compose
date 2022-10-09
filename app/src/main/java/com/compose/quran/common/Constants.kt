@@ -3,5 +3,5 @@ package com.compose.quran.common
 object Constants {
 
 
-    const val PARAM_SURAH = "Surah"
+    const val PARAM_SURAH = "surahNomor"
 }

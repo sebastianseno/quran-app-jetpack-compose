@@ -1,15 +1,20 @@
 package com.compose.quran.ui.main
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.Tab
+import androidx.compose.material.TabRow
+import androidx.compose.material.TabRowDefaults
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.compose.quran.ui.surah.Header
 import com.compose.quran.ui.surah.SurahList
 import com.compose.quran.ui.theme.*
@@ -18,20 +23,18 @@ import kotlinx.coroutines.launch
 
 @ExperimentalPagerApi
 @Composable
-fun Main() {
-    Scaffold(
-        backgroundColor = BackGround
-    ) {
-        Column {
-            Header()
-            TabLayout()
-        }
+fun Main(
+    navController: NavController
+) {
+    Column (Modifier.background(BackGround)){
+        Header()
+        TabLayout(navController)
     }
 }
 
 @ExperimentalPagerApi
 @Composable
-fun TabLayout() {
+fun TabLayout(navController: NavController) {
     val page = listOf(
         "Surah",
         "Juz",
@@ -74,12 +77,12 @@ fun TabLayout() {
             )
         }
     }
-    TabsContent(page, pagerState)
+    TabsContent(navController, page, pagerState)
 }
 
 @Composable
 @ExperimentalPagerApi
-fun TabsContent(pageList: List<String>, pagerState: PagerState) {
+fun TabsContent(navController: NavController, pageList: List<String>, pagerState: PagerState) {
     HorizontalPager(
         count = pageList.size,
         state = pagerState,
@@ -88,13 +91,13 @@ fun TabsContent(pageList: List<String>, pagerState: PagerState) {
     ) { page ->
         when (page) {
             0 -> {
-                SurahList()
+                SurahList(navController = navController)
             }
             1 -> {
-                SurahList()
+                SurahList(navController = navController)
             }
             else -> {
-                SurahList()
+                SurahList(navController = navController)
             }
         }
 

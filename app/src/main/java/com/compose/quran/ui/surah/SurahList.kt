@@ -15,12 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.compose.quran.ui.main.Screen
 import com.compose.quran.ui.surah.viewModel.SurahViewModel
-import java.util.*
+import com.compose.quran.ui.theme.GreenPrimary
 
 @Composable
 fun SurahList(
-    viewModel: SurahViewModel = hiltViewModel()
+    viewModel: SurahViewModel = hiltViewModel(),
+    navController: NavController,
 ) {
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
@@ -35,11 +38,14 @@ fun SurahList(
                     totalAyah = surah.numberOfVerses,
                     revelationPlace = surah.revelationPlace.replaceFirstChar {
                         it.uppercase()
+                    },
+                    onItemClick = {
+                        navController.navigate(Screen.SurahDetailScreen.route + "/${surah.number}")
                     }
                 )
             }
         }
-        if(state.error.isNotBlank() || state.surah.isNullOrEmpty()) {
+        if (state.error.isNotBlank() || state.surah.isNullOrEmpty()) {
             Text(
                 text = state.error,
                 color = MaterialTheme.colors.error,
@@ -51,7 +57,11 @@ fun SurahList(
             )
         }
         if (state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            CircularProgressIndicator(
+                color = GreenPrimary,
+                modifier = Modifier
+                    .align(Alignment.Center)
+            )
         }
     }
 }

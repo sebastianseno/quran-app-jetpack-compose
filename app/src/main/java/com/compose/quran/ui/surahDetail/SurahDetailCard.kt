@@ -6,23 +6,28 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.compose.quran.R
 import com.compose.quran.ui.theme.BackGround
+import com.compose.quran.ui.theme.GreenPrimary
 import com.compose.quran.ui.theme.GreenSolid2
 import com.compose.quran.ui.theme.SoftGrey
 import com.compose.quran.ui.widget.IndexAyah
 import com.compose.quran.ui.widget.TextWidget
 
-@Preview
 @Composable
-fun SurahDetailCard() {
+fun SurahDetailCard(
+    ayah: String,
+    arab: String,
+    idn: String,
+) {
     Column(
         Modifier
             .background(BackGround)
@@ -45,7 +50,7 @@ fun SurahDetailCard() {
                         .height(30.dp),
                     fontSize = 10.sp,
                     backgroundDrawableResId = R.drawable.ic_ayah_frame,
-                    textNumber = "1"
+                    textNumber = ayah
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 Image(
@@ -55,14 +60,18 @@ fun SurahDetailCard() {
                 )
             }
         }
-        TextWidget(
-            text = "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ",
+        Text(
+            text = arab,
+            fontSize = 24.sp,
+            textAlign = TextAlign.End,
+            color = GreenPrimary,
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(top = 15.dp)
                 .align(Alignment.End)
         )
         TextWidget(
-            text = "Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang.",
+            text = idn,
             modifier = Modifier
                 .padding(top = 12.dp)
                 .fillMaxWidth()

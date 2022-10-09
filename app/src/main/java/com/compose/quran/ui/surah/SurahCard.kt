@@ -1,5 +1,6 @@
 package com.compose.quran.ui.surah
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,12 +27,16 @@ fun SurahCard(
     arab: String,
     number: Int,
     totalAyah: Int,
-    revelationPlace: String
+    revelationPlace: String,
+    onItemClick: (number: String) -> Unit
 ) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 34.dp)
+            .clickable {
+                onItemClick(number.toString())
+            }
     ) {
         val (image, title, description, ayah, divider) = createRefs()
         IndexAyah(
@@ -91,20 +96,6 @@ fun SurahCard(
                     top.linkTo(description.bottom)
                 }
                 .padding(top = 18.dp)
-        )
-    }
-}
-
-@Preview
-@Composable
-fun SurahCardPreview() {
-    MobileQuranTheme(darkTheme = false) {
-        SurahCard(
-            surahName = "Al Fatihah",
-            arab = "الفاتحة",
-            number = 1,
-            totalAyah = 7,
-            revelationPlace = "Makkah"
         )
     }
 }

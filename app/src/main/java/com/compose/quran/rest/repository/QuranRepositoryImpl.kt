@@ -1,6 +1,7 @@
 package com.compose.quran.rest.repository
 
 import com.compose.quran.domain.repositories.QuranRepository
+import com.compose.quran.rest.response.DetailSurahResponse
 import com.compose.quran.rest.response.SurahListResponseItem
 import com.compose.quran.rest.services.SurahServices
 import javax.inject.Inject
@@ -13,4 +14,7 @@ class QuranRepositoryImpl @Inject constructor(
         return api.getSurah()
     }
 
+    override suspend fun getDetailSurah(number: String): DetailSurahResponse {
+        return api.getDetailSurah(number)
+    }
 }
