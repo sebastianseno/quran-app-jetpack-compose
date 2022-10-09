@@ -2,6 +2,8 @@ package com.compose.quran.di
 
 import android.util.Log
 import com.compose.quran.BuildConfig
+import com.compose.quran.domain.repositories.QuranRepository
+import com.compose.quran.rest.repository.QuranRepositoryImpl
 import com.compose.quran.rest.services.SurahServices
 import dagger.Module
 import dagger.Provides
@@ -74,12 +76,16 @@ class NetworkModule {
         return builder.build()
     }
 
+    @Provides
+    @Singleton
+    fun provideQuranRepository(api: SurahServices): QuranRepository {
+        return QuranRepositoryImpl(api)
+    }
 
     @Provides
     @Singleton
     fun provideSurahServices(retrofit: Retrofit): SurahServices {
         return retrofit.create(SurahServices::class.java)
     }
-
 
 }

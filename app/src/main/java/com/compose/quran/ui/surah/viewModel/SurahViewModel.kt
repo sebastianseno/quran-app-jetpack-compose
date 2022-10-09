@@ -30,8 +30,6 @@ class SurahViewModel @Inject constructor(
             when (result) {
                 is Resource.Success -> {
                     _state.value = SurahState(surah = result.data)
-                    Log.d("senooo", result.data.toString())
-
                 }
                 is Resource.Error -> {
                     _state.value = SurahState(

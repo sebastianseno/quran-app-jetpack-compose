@@ -2,8 +2,6 @@ package com.compose.quran.rest.response
 import com.google.gson.annotations.SerializedName
 
 
-class SurahListResponse : ArrayList<SurahListResponseItem>()
-
 data class SurahListResponseItem(
     @SerializedName("nomor")
     val number: Int = 0,

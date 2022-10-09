@@ -1,9 +1,9 @@
 package com.compose.quran.ui.surah
 
-import com.compose.quran.rest.response.SurahListResponse
+import com.compose.quran.rest.response.SurahListResponseItem
 
 data class SurahState(
     val isLoading: Boolean = false,
-    val surah: SurahListResponse? = null,
+    val surah: List<SurahListResponseItem>? = null,
     val error: String = ""
 )

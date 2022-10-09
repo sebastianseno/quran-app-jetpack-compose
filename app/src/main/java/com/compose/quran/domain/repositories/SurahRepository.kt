@@ -1,6 +1,6 @@
 package com.compose.quran.domain.repositories
-import com.compose.quran.rest.response.SurahListResponse
+import com.compose.quran.rest.response.SurahListResponseItem
 
-interface SurahRepository {
-    suspend fun getSurahData(): Result<SurahListResponse>
-}
+interface QuranRepository {
+    suspend fun getSurahData(): List<SurahListResponseItem>
+ }
