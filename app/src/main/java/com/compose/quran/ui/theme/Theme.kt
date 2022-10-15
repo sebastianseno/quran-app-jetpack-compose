@@ -23,16 +23,19 @@ private val LightColorPalette = lightColors(
     primary = GreenPrimary,
     primaryVariant = DarkGreen,
     secondary = GreenSolid,
-    background = Color.White,
+    background = BackGround,
     surface = BackGround,
-    onPrimary = Color.White,
+    onPrimary = DarkHard,
     onSecondary = Color.Black,
     onBackground = Color.Black,
     onSurface = Color.Black,
 )
 
 @Composable
-fun MobileQuranTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+fun MobileQuranTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
     val colors = if (darkTheme) {
         DarkColorPalette
     } else {

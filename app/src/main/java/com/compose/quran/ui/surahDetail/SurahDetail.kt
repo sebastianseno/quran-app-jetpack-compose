@@ -34,7 +34,7 @@ fun SurahDetail(
     val state = viewModel.state.value
     Column(
         Modifier
-            .background(BackGround)
+            .background(MaterialTheme.colors.background)
             .padding(
                 vertical = 24.dp
             )

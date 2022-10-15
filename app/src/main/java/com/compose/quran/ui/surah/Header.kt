@@ -2,6 +2,7 @@ package com.compose.quran.ui.surah
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,13 +32,13 @@ fun Header() {
         Text(
             text = "Assalamu’alaikum",
             fontSize = 15.sp,
-            color = DarkHard,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.Medium
         )
         Text(
             text = "Reza Al Farel",
             fontSize = 32.sp,
-            color = DarkHard,
+            color = MaterialTheme.colors.onPrimary,
             fontWeight = FontWeight.SemiBold
         )
 

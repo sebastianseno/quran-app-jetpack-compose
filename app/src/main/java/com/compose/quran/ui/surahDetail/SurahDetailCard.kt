@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,7 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.compose.quran.R
-import com.compose.quran.ui.theme.BackGround
 import com.compose.quran.ui.theme.GreenPrimary
 import com.compose.quran.ui.theme.GreenSolid2
 import com.compose.quran.ui.theme.SoftGrey
@@ -30,7 +30,7 @@ fun SurahDetailCard(
 ) {
     Column(
         Modifier
-            .background(BackGround)
+            .background(MaterialTheme.colors.background)
             .padding(horizontal = 24.dp, vertical = 14.dp)
     ) {
         Card(

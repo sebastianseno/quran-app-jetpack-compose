@@ -4,10 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
-import androidx.compose.material.TabRowDefaults
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -26,7 +23,7 @@ import kotlinx.coroutines.launch
 fun Main(
     navController: NavController
 ) {
-    Column (Modifier.background(BackGround)){
+    Column (Modifier.background(MaterialTheme.colors.background)){
         Header()
         TabLayout(navController)
     }
@@ -59,7 +56,7 @@ fun TabLayout(navController: NavController) {
     ) {
         page.forEachIndexed { index, string ->
             Tab(
-                selectedContentColor = GreenSolid,
+                selectedContentColor = GreenPrimary,
                 unselectedContentColor = UnselectedGrey,
                 text = {
                     Text(
@@ -82,7 +79,11 @@ fun TabLayout(navController: NavController) {
 
 @Composable
 @ExperimentalPagerApi
-fun TabsContent(navController: NavController, pageList: List<String>, pagerState: PagerState) {
+fun TabsContent(
+    navController: NavController,
+    pageList: List<String>,
+    pagerState: PagerState
+) {
     HorizontalPager(
         count = pageList.size,
         state = pagerState,
@@ -100,6 +101,5 @@ fun TabsContent(navController: NavController, pageList: List<String>, pagerState
                 SurahList(navController = navController)
             }
         }
-
     }
 }
