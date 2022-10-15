@@ -1,22 +1,31 @@
 package com.compose.quran.ui.main
 
+import android.Manifest
+import android.app.Activity
+import android.content.Context
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.ActivityResultRegistry
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Tab
-import androidx.compose.material.TabRow
-import androidx.compose.material.TabRowDefaults
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.compose.quran.ui.surah.Header
 import com.compose.quran.ui.surah.SurahList
+import com.compose.quran.ui.surah.viewModel.SurahViewModel
 import com.compose.quran.ui.theme.*
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
@@ -24,11 +33,46 @@ import kotlinx.coroutines.launch
 @ExperimentalPagerApi
 @Composable
 fun Main(
-    navController: NavController
+    context: Activity,
+    navController: NavController,
+    viewModel: SurahViewModel = hiltViewModel()
 ) {
     Column (Modifier.background(BackGround)){
         Header()
+        SearchLayout(context, viewModel)
         TabLayout(navController)
+    }
+}
+
+@Composable
+fun SearchLayout(context: Activity, viewModel: SurahViewModel) {
+
+    var text by rememberSaveable  { mutableStateOf("") }
+
+    val getContactsLauncher = rememberLauncherForActivityResult(ActivityResultContracts.PickContact()) {
+
+        }
+    val register = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
+        if (it) {
+            getContactsLauncher.launch(null)
+        }
+    }
+    Column() {
+        TextField(
+            value = text,
+            onValueChange = {
+                text = it
+            },
+            label = { Text(text = "Your Label") },
+            placeholder = { Text(text = "Your Placeholder/Hint") },
+        )
+        Button(onClick = {
+            register.launch(
+                Manifest.permission.READ_CONTACTS
+            )
+        }) {
+
+        }
     }
 }
 

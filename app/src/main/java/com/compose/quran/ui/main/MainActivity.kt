@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screen.SurahListScreen.route
                     ) {
                         composable(route = Screen.SurahListScreen.route) {
-                            Main(navController = navController)
+                            Main(navController = navController, context = this@MainActivity)
                         }
                         composable(route = Screen.SurahDetailScreen.route + "/{surahNomor}") {
                             SurahDetail()

@@ -24,7 +24,7 @@ class SurahViewModel @Inject constructor(
         getSurahList()
     }
 
-    private fun getSurahList() {
+     fun getSurahList() {
         surahUseCase.getSurah().onEach { result ->
             when (result) {
                 is Resource.Success -> {
