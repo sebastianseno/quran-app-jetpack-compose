@@ -60,9 +60,7 @@ fun SurahCard(
                     bottom.linkTo(description.top)
                     start.linkTo(image.end)
                 }
-
         )
-
         TextWidget(
             text = "$revelationPlace - $totalAyah Ayat",
             fontWeight = FontWeight.Medium,
