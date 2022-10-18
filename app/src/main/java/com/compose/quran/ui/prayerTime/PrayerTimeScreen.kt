@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.compose.quran.R
+import com.compose.quran.ui.theme.BackGround
 import com.compose.quran.ui.theme.GreenPrimary
 import com.compose.quran.ui.theme.GreenSolid2
 import com.compose.quran.ui.widget.TextWidget
@@ -70,13 +71,13 @@ fun PrayerTimeScreen() {
                         topEnd = 18.dp
                     )
                 )
+                .fillMaxSize()
                 .fillMaxWidth()
                 .background(
-                    MaterialTheme.colors.background
+                    BackGround
                 )
                 .constrainAs(prayerSchedule) {
                     top.linkTo(header.bottom)
-                    bottom.linkTo(parent.bottom)
                 }
         ) {
             Spacer(
@@ -93,7 +94,6 @@ fun PrayerTimeScreen() {
                     .clip(
                         RoundedCornerShape(18.dp)
                     )
-                    .height(348.dp)
                     .background(GreenSolid2)
             ) {
                 Spacer(
@@ -105,8 +105,10 @@ fun PrayerTimeScreen() {
                 PrayerCard()
                 PrayerCard()
                 PrayerCard()
-                PrayerCard()
-                PrayerCard()
+                Spacer(
+                    modifier = Modifier
+                        .height(31.dp)
+                )
             }
         }
         Column(
