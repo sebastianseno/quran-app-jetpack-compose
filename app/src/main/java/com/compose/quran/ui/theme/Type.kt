@@ -16,6 +16,15 @@ val PoppinsFontFamily = FontFamily(
     Font(R.font.poppins_regular, weight = FontWeight.Bold)
 )
 
+
+val NoorHidayatFamily = FontFamily(
+    Font(R.font.noorehidayat, weight = FontWeight.Light),
+    Font(R.font.noorehidayat, weight = FontWeight.Normal),
+    Font(R.font.noorehidayat, weight = FontWeight.Medium),
+    Font(R.font.noorehidayat, weight = FontWeight.SemiBold),
+    Font(R.font.noorehidayat, weight = FontWeight.Bold)
+)
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(

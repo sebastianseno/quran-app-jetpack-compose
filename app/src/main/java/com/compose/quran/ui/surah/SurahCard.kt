@@ -9,12 +9,15 @@ import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.compose.quran.R
 import com.compose.quran.ui.theme.GreenPrimary
+import com.compose.quran.ui.theme.NoorHidayatFamily
 import com.compose.quran.ui.theme.SoftGrey
 import com.compose.quran.ui.widget.IndexAyah
 import com.compose.quran.ui.widget.TextWidget
@@ -77,6 +80,7 @@ fun SurahCard(
             text = arab,
             fontWeight = FontWeight.Bold,
             color = GreenPrimary,
+            fontFamily = FontFamily(Font(R.font.besmellah)),
             fontSize = 16.sp,
             modifier = Modifier
                 .padding(start = 15.dp)

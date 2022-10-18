@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import com.compose.quran.R
 import com.compose.quran.ui.theme.GreenPrimary
 import com.compose.quran.ui.theme.GreenSolid2
+import com.compose.quran.ui.theme.NoorHidayatFamily
 import com.compose.quran.ui.theme.SoftGrey
 import com.compose.quran.ui.widget.IndexAyah
 import com.compose.quran.ui.widget.TextWidget
@@ -65,10 +66,12 @@ fun SurahDetailCard(
             fontSize = 24.sp,
             textAlign = TextAlign.End,
             color = GreenPrimary,
+            fontFamily = NoorHidayatFamily,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 15.dp)
                 .align(Alignment.End)
+
         )
         TextWidget(
             text = idn,

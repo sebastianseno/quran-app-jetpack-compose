@@ -3,7 +3,6 @@ package com.compose.quran.ui.prayerTime
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -63,11 +62,8 @@ fun PrayerTimeScreen() {
                     .height(90.dp)
             )
         }
-        Box(
-            contentAlignment = Alignment.Center,
+        Column(
             modifier = Modifier
-                .fillMaxHeight(1f)
-
                 .clip(
                     RoundedCornerShape(
                         topStart = 18.dp,
@@ -80,27 +76,38 @@ fun PrayerTimeScreen() {
                 )
                 .constrainAs(prayerSchedule) {
                     top.linkTo(header.bottom)
+                    bottom.linkTo(parent.bottom)
                 }
         ) {
+            Spacer(
+                modifier = Modifier
+                    .height(61.dp)
+            )
             Column(
                 Modifier
-                    .padding(start = 24.dp, end = 24.dp)
-                    .clip(RoundedCornerShape(18.dp))
+                    .padding(
+                        start = 24.dp,
+                        end = 24.dp,
+                        bottom = 32.dp
+                    )
+                    .clip(
+                        RoundedCornerShape(18.dp)
+                    )
+                    .height(348.dp)
                     .background(GreenSolid2)
-                    .fillMaxHeight()
             ) {
+                Spacer(
+                    modifier = Modifier
+                        .height(31.dp)
+                )
+                PrayerCard()
+                PrayerCard()
+                PrayerCard()
+                PrayerCard()
                 PrayerCard()
                 PrayerCard()
                 PrayerCard()
             }
-//            LazyColumn(
-//                Modifier
-//                    .padding(vertical = 24.dp)
-//                    .clip(RoundedCornerShape(18.dp))
-//                    .background(GreenSolid2)
-//            ) {
-//
-//            }
         }
         Column(
             modifier = Modifier
