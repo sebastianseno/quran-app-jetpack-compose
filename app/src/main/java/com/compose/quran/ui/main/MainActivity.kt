@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.compose.quran.common.Constants.PARAM_SURAH
 import com.compose.quran.ui.prayerTime.PrayerCard
 import com.compose.quran.ui.prayerTime.PrayerTimeScreen
 import com.compose.quran.ui.surahDetail.SurahDetail
@@ -30,9 +31,9 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screen.SurahListScreen.route
                     ) {
                         composable(route = Screen.SurahListScreen.route) {
-                            PrayerTimeScreen()
+                            Main(navController)
                         }
-                        composable(route = Screen.SurahDetailScreen.route + "/{surahNomor}") {
+                        composable(route = Screen.SurahDetailScreen.route + "/{${PARAM_SURAH}}") {
                             SurahDetail()
                         }
                     }
