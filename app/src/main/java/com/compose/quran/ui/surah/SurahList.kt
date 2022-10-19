@@ -40,7 +40,10 @@ fun SurahList(
                         it.uppercase()
                     },
                     onItemClick = {
-                        navController.navigate(Screen.SurahDetailScreen.route + "/${surah.number}")
+                        navController.currentBackStackEntry?.savedStateHandle?.set<String>(
+                            "SURAH", surah.latinName
+                        )
+                        navController.navigate(Screen.SurahDetailScreen.route)
                     }
                 )
             }

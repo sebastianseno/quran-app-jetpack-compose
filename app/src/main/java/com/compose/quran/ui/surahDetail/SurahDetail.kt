@@ -29,7 +29,7 @@ import com.compose.quran.ui.widget.TextWidget
 @Composable
 fun SurahDetail(
     viewModel: SurahDetailViewModel = hiltViewModel(),
-    number: String = "1"
+    name: String = "1"
 ) {
     val state = viewModel.state.value
     Column(
@@ -40,7 +40,7 @@ fun SurahDetail(
             )
     ) {
         HeaderSurahDetail(
-            state.surah?.namaLatin.orEmpty(),
+            name,
             state.surah?.arti.orEmpty(),
             state.isLoading
         )

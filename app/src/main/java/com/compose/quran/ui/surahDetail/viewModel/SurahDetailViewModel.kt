@@ -23,14 +23,14 @@ class SurahDetailViewModel @Inject constructor(
 
     private val _state = mutableStateOf(SurahDetailState())
     val state: State<SurahDetailState> = _state
+//
+//    init {
+//        savedStateHandle.get<String>(Constants.PARAM_SURAH)?.let {
+//            getSurahDetailList(it)
+//        }
+//    }
 
-    init {
-        savedStateHandle.get<String>(Constants.PARAM_SURAH)?.let {
-            getSurahDetailList(it)
-        }
-    }
-
-    private fun getSurahDetailList(nomor : String) {
+    fun getSurahDetailList(nomor : String) {
         surahUseCase.getDetailSurah(nomor).onEach { result ->
             when (result) {
                 is Resource.Success -> {

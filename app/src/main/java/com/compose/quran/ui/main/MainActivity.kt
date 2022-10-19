@@ -33,8 +33,9 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.SurahListScreen.route) {
                             Main(navController)
                         }
-                        composable(route = Screen.SurahDetailScreen.route + "/{${PARAM_SURAH}}") {
-                            SurahDetail()
+                        composable(route = Screen.SurahDetailScreen.route) {
+                            val result = navController.previousBackStackEntry?.savedStateHandle?.get<String>("SURAH")
+                            SurahDetail(name = result?: "0")
                         }
                     }
                 }
