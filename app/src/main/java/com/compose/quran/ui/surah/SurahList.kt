@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.compose.quran.ui.main.Screen
+import com.compose.quran.navigation.Screen
 import com.compose.quran.ui.surah.viewModel.SurahViewModel
 import com.compose.quran.ui.theme.GreenPrimary
 
@@ -40,10 +40,7 @@ fun SurahList(
                         it.uppercase()
                     },
                     onItemClick = {
-                        navController.currentBackStackEntry?.savedStateHandle?.set<String>(
-                            "SURAH", surah.latinName
-                        )
-                        navController.navigate(Screen.SurahDetailScreen.route)
+                        navController.navigate(Screen.SurahDetailScreen.passSurahId(surah.latinName))
                     }
                 )
             }
