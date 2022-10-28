@@ -1,14 +1,18 @@
 package com.compose.quran.ui.surahDetail.viewModel
 
 import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.compose.quran.common.Constants
 import com.compose.quran.domain.usecase.SurahUseCase
 import com.compose.quran.domain.util.Resource
+import com.compose.quran.rest.repository.DefaultPaginator
 import com.compose.quran.ui.surah.SurahState
+import com.compose.quran.ui.surah.viewModel.ScreenState
 import com.compose.quran.ui.surahDetail.SurahDetailState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -23,6 +27,7 @@ class SurahDetailViewModel @Inject constructor(
 
     private val _state = mutableStateOf(SurahDetailState())
     val state: State<SurahDetailState> = _state
+
 
     init {
         savedStateHandle.get<String>(Constants.PARAM_SURAH)?.let {

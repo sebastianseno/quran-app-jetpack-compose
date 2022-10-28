@@ -3,6 +3,7 @@ package com.compose.quran.ui.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -14,19 +15,25 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.compose.quran.ui.surah.Header
 import com.compose.quran.ui.surah.SurahList
-import com.compose.quran.ui.theme.*
+import com.compose.quran.ui.theme.GreenPrimary
+import com.compose.quran.ui.theme.PoppinsFontFamily
+import com.compose.quran.ui.theme.UnselectedGrey
 import com.google.accompanist.pager.*
 import kotlinx.coroutines.launch
 
 @ExperimentalPagerApi
 @Composable
 fun Main(
-    navController: NavController
+    navController: NavController,
 ) {
-    Column (Modifier.background(MaterialTheme.colors.background)){
-        Header()
-        TabLayout(navController)
-    }
+    SurahList()
+//
+//    Column(
+//        Modifier
+//            .fillMaxSize()
+//            .background(MaterialTheme.colors.background)
+//    ) {
+//    }
 }
 
 @ExperimentalPagerApi
@@ -90,16 +97,6 @@ fun TabsContent(
         modifier = Modifier
             .fillMaxHeight()
     ) { page ->
-        when (page) {
-            0 -> {
-                SurahList(navController = navController)
-            }
-            1 -> {
-                SurahList(navController = navController)
-            }
-            else -> {
-                SurahList(navController = navController)
-            }
-        }
+
     }
 }

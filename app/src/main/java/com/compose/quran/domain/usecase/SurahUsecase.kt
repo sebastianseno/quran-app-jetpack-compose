@@ -1,9 +1,9 @@
 package com.compose.quran.domain.usecase
 
+import androidx.paging.PagingData
 import com.compose.quran.domain.repositories.QuranRepository
 import com.compose.quran.domain.util.Resource
-import com.compose.quran.rest.response.DetailSurahResponse
-import com.compose.quran.rest.response.SurahListResponseItem
+import com.compose.quran.rest.response.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -31,6 +31,10 @@ class SurahUseCase @Inject constructor(
         }.onFailure {
             emit(Resource.Error(message = it.message ?: "An unknown error occurred.", data = null))
         }
+    }
+
+    fun getUser():Flow<PagingData<Item>> = flow {
+
     }
 
 }

@@ -34,7 +34,6 @@ fun SurahCard(
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 34.dp)
             .clickable {
                 onItemClick(number.toString())
             }
@@ -56,6 +55,7 @@ fun SurahCard(
             fontWeight = FontWeight.Bold,
             color = GreenPrimary,
             fontSize = 16.sp,
+
             modifier = Modifier
                 .padding(start = 15.dp)
                 .constrainAs(title) {
@@ -80,7 +80,6 @@ fun SurahCard(
             text = arab,
             fontWeight = FontWeight.Bold,
             color = GreenPrimary,
-            fontFamily = FontFamily(Font(R.font.besmellah)),
             fontSize = 16.sp,
             modifier = Modifier
                 .padding(start = 15.dp)

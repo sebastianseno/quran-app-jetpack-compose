@@ -9,7 +9,9 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
@@ -62,6 +64,17 @@ class NetworkModule {
 
     }
 
+    private fun getOkHttpNetworkInterceptor(): Interceptor {
+        return object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val newRequest = chain.request()
+                val builder = newRequest.newBuilder().addHeader(
+                    "Authorization", "token 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").build()
+                return chain.proceed(builder)
+            }
+        }
+    }
+
     @Provides
     @Singleton
     fun providesOkhttpClient(): OkHttpClient {
@@ -69,9 +82,10 @@ class NetworkModule {
             .connectTimeout(timeOut.toLong(), TimeUnit.SECONDS)
             .readTimeout(timeOut.toLong(), TimeUnit.SECONDS)
             .writeTimeout(timeOut.toLong(), TimeUnit.SECONDS)
+//            .addInterceptor(getOkHttpNetworkInterceptor())
             .addInterceptor(
-            HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY)
+                HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BODY)
             )
         return builder.build()
     }
