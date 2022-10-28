@@ -34,7 +34,7 @@ class SurahViewModel @Inject constructor(
     private val _state = mutableStateOf(SurahState())
     val state: State<SurahState> = _state
 
-    private val _userGithub = MutableStateFlow<PagingData<UnsplashImage>>(PagingData.empty())
+    private val _userGithub = MutableStateFlow<PagingData<Item>>(PagingData.empty())
     val userGithub = _userGithub
 
     init {

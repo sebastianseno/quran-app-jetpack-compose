@@ -17,6 +17,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import androidx.compose.foundation.lazy.LazyColumn
+import com.compose.quran.rest.response.Item
 import com.compose.quran.rest.response.UnsplashImage
 import com.compose.quran.ui.surah.viewModel.SurahViewModel
 import com.compose.quran.ui.theme.GreenPrimary
@@ -26,7 +27,7 @@ fun SurahList(
     viewModel: SurahViewModel = hiltViewModel(),
 ) {
     val state = viewModel.state.value
-    val githubUsers: LazyPagingItems<UnsplashImage> = viewModel.userGithub.collectAsLazyPagingItems()
+    val githubUsers: LazyPagingItems<Item> = viewModel.userGithub.collectAsLazyPagingItems()
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -38,11 +39,11 @@ fun SurahList(
         ) { item ->
             item.let {
                 SurahCard(
-                    surahName = it?.id.orEmpty(),
+                    surahName = it?.fullName ?: "",
                     arab = "",
                     number = 1,
                     totalAyah = 0,
-                    revelationPlace = it?.likes.toString().orEmpty(),
+                    revelationPlace = it?.login.toString(),
                     onItemClick = {
 
                     }

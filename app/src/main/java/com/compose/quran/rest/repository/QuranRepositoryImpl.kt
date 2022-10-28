@@ -22,7 +22,7 @@ class QuranRepositoryImpl @Inject constructor(
         return api.getDetailSurah(number)
     }
 
-    override suspend fun getUserResponse(): Flow<PagingData<UnsplashImage>> {
+    override suspend fun getUserResponse(): Flow<PagingData<Item>> {
         return Pager(
             config = PagingConfig(pageSize = 10),
             pagingSourceFactory = {
