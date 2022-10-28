@@ -1,13 +1,10 @@
 package com.compose.quran.domain.repositories
 import androidx.paging.PagingData
-import com.compose.quran.rest.response.DetailSurahResponse
-import com.compose.quran.rest.response.Item
-import com.compose.quran.rest.response.SurahListResponseItem
-import com.compose.quran.rest.response.UserResponse
+import com.compose.quran.rest.response.*
 import kotlinx.coroutines.flow.Flow
 
 interface QuranRepository {
     suspend fun getSurahData(): List<SurahListResponseItem>
     suspend fun getDetailSurah(number: String): DetailSurahResponse
-    suspend fun getUserResponse(): Flow<PagingData<Item>>
+    suspend fun getUserResponse(): Flow<PagingData<UnsplashImage>>
  }

@@ -12,6 +12,7 @@ import com.compose.quran.domain.usecase.SurahUseCase
 import com.compose.quran.domain.util.Resource
 import com.compose.quran.rest.repository.QuranRepositoryImpl
 import com.compose.quran.rest.response.Item
+import com.compose.quran.rest.response.UnsplashImage
 import com.compose.quran.rest.response.User
 import com.compose.quran.ui.surah.SurahState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,7 +34,7 @@ class SurahViewModel @Inject constructor(
     private val _state = mutableStateOf(SurahState())
     val state: State<SurahState> = _state
 
-    private val _userGithub = MutableStateFlow<PagingData<Item>>(PagingData.empty())
+    private val _userGithub = MutableStateFlow<PagingData<UnsplashImage>>(PagingData.empty())
     val userGithub = _userGithub
 
     init {

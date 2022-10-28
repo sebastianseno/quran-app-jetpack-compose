@@ -4,8 +4,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -17,7 +15,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.compose.quran.rest.response.Item
+import androidx.paging.compose.items
+import androidx.compose.foundation.lazy.LazyColumn
+import com.compose.quran.rest.response.UnsplashImage
 import com.compose.quran.ui.surah.viewModel.SurahViewModel
 import com.compose.quran.ui.theme.GreenPrimary
 
@@ -26,7 +26,7 @@ fun SurahList(
     viewModel: SurahViewModel = hiltViewModel(),
 ) {
     val state = viewModel.state.value
-    val githubUsers: LazyPagingItems<Item> = viewModel.userGithub.collectAsLazyPagingItems()
+    val githubUsers: LazyPagingItems<UnsplashImage> = viewModel.userGithub.collectAsLazyPagingItems()
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -34,18 +34,15 @@ fun SurahList(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(
-            items = githubUsers.itemSnapshotList,
-            key = {
-                it?.id ?: 0
-            }
+            items = githubUsers,
         ) { item ->
             item.let {
                 SurahCard(
-                    surahName = it?.login.orEmpty(),
+                    surahName = it?.id.orEmpty(),
                     arab = "",
                     number = 1,
                     totalAyah = 0,
-                    revelationPlace = it?.fullName.orEmpty(),
+                    revelationPlace = it?.likes.toString().orEmpty(),
                     onItemClick = {
 
                     }
@@ -76,19 +73,6 @@ fun SurahList(
             }
         }
 
-//            items(state.surah.orEmpty()) { surah ->
-//                SurahCard(
-//                    surahName = surah.latinName,
-//                    arab = surah.name,
-//                    number = surah.number,
-//                    totalAyah = surah.numberOfVerses,
-//                    revelationPlace = surah.revelationPlace.replaceFirstChar {
-//                        it.uppercase()
-//                    },
-//                    onItemClick = {
-//                        navController.navigate(Screen.SurahDetailScreen.route + "/${surah.number}")
-//                    }
-//                )
-//            }
+
     }
 }
